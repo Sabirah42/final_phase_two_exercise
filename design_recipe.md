@@ -24,19 +24,34 @@
 
 ## 2. Design the Class System
 
-Design the interfaces of each of your classes and how they will work together
-to achieve the job of the program. You can use diagrams to visualise the
-relationships between classes.
-
-Consider pulling out the key verbs and nouns in the problem description to
-help you figure out which classes and methods to have.
-
-Steps 3, 4, and 5 then operate as a cycle.
+See Final Challenge Initial Design image
 
 ## 3. Create Examples as Integration Tests
 
 Create examples of the classes being used together in different situations
 and combinations that reflect the ways in which the system will be used.
+
+**When multiple diary entries are added  
+Diary returns these in a list:**  
+
+    diary = Diary
+    entry_1 = DiaryEntry("Day One", "Today was a good day.")
+    entry_2 = DiaryEntry("Day Two", "Today was not so great.")
+    diary.add_entry(entry_1)
+    diary.add_entry(entry_2)
+
+    assert diary.all_entries() == [entry_1, entry_2]
+
+**When multiple Todos are added  
+Diary returns all Todos in a list**
+
+    diary = Diary()
+    todo_1 = Todo("Do laundry")
+    todo_2 = Todo("Do dishes")
+    diary.add_todo(todo_1)
+    diary.add_todo(todo_2)
+
+    assert diary.all_tasks() == [todo_1, todo_2]
 
 Encode one of these as a test and move to step 4.
 
@@ -44,6 +59,41 @@ Encode one of these as a test and move to step 4.
 
 Create examples, where appropriate, of the behaviour of each relevant class at
 a more granular level of detail.
+
+### Diary Entry Class:
+
+**Initialises with a title and contents**
+    entry = DiaryEntry("Day One", "Today was a good day.")
+
+    assert entry.title == "Day One"
+    assert entry.contents == "Today was a good day."
+
+**Formats diary entry**
+    entry = DiaryEntry("Day One", "Today was a good day.")
+
+    assert entry.format() == "Day One: Today was a good day."
+
+### Diary Class:
+
+**Initialises with an empty list**
+    diary = Diary()
+
+    assert diary.diary_entries == []
+
+### Todo Class:
+
+**Initialises with a task and False completed attribute**
+    todo = Todo("Do laundry")
+
+    assert todo.task == "Do laundry"
+    assert todo.complete == False
+
+**Tasks can be marked as complete**
+    todo_1 = Todo("Do laundry")
+    todo_2 = Todo("Do shopping")
+    todo_1.mark_completed()
+
+    assert todo_1.complete == True
 
 Encode one of these as a test and move to step 5.
 
