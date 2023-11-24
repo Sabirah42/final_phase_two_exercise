@@ -83,10 +83,14 @@ Contacts adds this to contacts list**~~
 
 **When a phone number is added to diary entry  
 Contacts adds this to contacts list**
+    contacts = Contacts()
+    diary = Diary()
     entry_1 = DiaryEntry("Day One", "Today was a good day.")
     entry_2 = DiaryEntry("Day Two", "Got Max's phone number today!", "Max Miller", "07654863902")
+    diary.add_entry(entry_1)
+    diary.add_entry(entry_2)
 
-    assert contacts.phone_numbers == {"Max Miller": "07654863902"}
+    assert contacts.all_contacts(diary) == {"Max Miller": "07654863902"}  
 Encode one of these as a test and move to step 4.
 
 ## 4. Create Examples as Unit Tests

@@ -1,5 +1,5 @@
 class DiaryEntry():
-    def __init__(self, title=None, contents=None, contact_name=None, contact_number=None):
+    def __init__(self, title, contents, contact_name=None, contact_number=None):
         self.title = title
         self.contents = contents
         self.contact_name = contact_name
@@ -7,3 +7,4 @@ class DiaryEntry():
 
     def format(self):
         return f'{self.title}: {self.contents}'
+    

@@ -34,13 +34,15 @@ def test_all_tasks_returns_only_incomplete_todos():
 
 def test_contacts_adds_contacts_from_diary_entry():
     contacts = Contacts()
-    DiaryEntry("Day One", "Today was a good day.")
-    DiaryEntry("Day Two", "Got Max's phone number today!", "Max Miller", "07654863902")
+    diary = Diary()
+    entry_1 = DiaryEntry("Day One", "Today was a good day.")
+    entry_2 = DiaryEntry("Day Two", "Got Max's phone number today!", "Max Miller", "07654863902")
+    diary.add_entry(entry_1)
+    diary.add_entry(entry_2)
 
-    assert contacts.list_numbers() == {"Max Miller": "07654863902"}  
+    assert contacts.all_contacts(diary) == {"Max Miller": "07654863902"}  
 
 
 # Still to do:
 # entry given time and reading speed
-# all of Contacts class
 # exceptions
