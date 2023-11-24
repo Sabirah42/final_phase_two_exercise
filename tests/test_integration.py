@@ -32,6 +32,13 @@ def test_all_tasks_returns_only_incomplete_todos():
 
     assert diary.all_tasks() == [todo_2]
 
+def test_contacts_adds_contacts_from_diary_entry():
+    contacts = Contacts()
+    DiaryEntry("Day One", "Today was a good day.")
+    DiaryEntry("Day Two", "Got Max's phone number today!", "Max Miller", "07654863902")
+
+    assert contacts.list_numbers() == {"Max Miller": "07654863902"}  
+
 
 # Still to do:
 # entry given time and reading speed
