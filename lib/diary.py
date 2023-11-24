@@ -13,4 +13,8 @@ class Diary():
         self.tasks.append(task)
 
     def all_tasks(self):
-        return self.tasks
+        incomplete_tasks = []
+        for task in self.tasks:
+            if task.complete == False:
+                incomplete_tasks.append(task)
+        return incomplete_tasks
